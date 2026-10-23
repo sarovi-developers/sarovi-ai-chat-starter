@@ -1,21 +1,21 @@
-name: Bug report
-description: Report a reproducible problem in this example.
+name: گزارش خطا
+description: گزارش یک مشکل قابل بازتولید در این نمونه.
 body:
   - type: textarea
     id: problem
     attributes:
-      label: What happened?
-      description: Include runtime version and a small, synthetic reproduction. Never include credentials or customer data.
+      label: چه اتفاقی افتاد؟
+      description: نسخهٔ محیط اجرا و یک نمونهٔ کوچک با دادهٔ ساختگی را بنویسید. کلید یا اطلاعات مشتری را وارد نکنید.
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: What did you expect?
+      label: انتظار چه نتیجه‌ای داشتید؟
     validations:
       required: true
   - type: textarea
     id: checks
     attributes:
-      label: Offline check output
-      description: Paste only redacted errors.
+      label: نتیجهٔ آزمون آفلاین
+      description: فقط خطاهای بدون اطلاعات خصوصی را وارد کنید.

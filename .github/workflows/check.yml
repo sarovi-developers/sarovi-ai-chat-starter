@@ -1,4 +1,4 @@
-name: Offline checks
+name: آزمون‌های آفلاین
 on: [push, pull_request]
 permissions:
   contents: read

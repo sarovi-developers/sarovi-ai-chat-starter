@@ -1,11 +1,11 @@
-# Reference sources
+# منابع راهنما
 
-Checked 23 October 2026.
+بررسی‌شده در ۲۳ اکتبر ۲۰۲۶.
 
-- [Sarovi public OpenAPI contract](https://api.sarovi.site/openapi.json)
-- [Sarovi first request](https://api.sarovi.site/developers/docs/quickstart)
-- [Sarovi streaming](https://api.sarovi.site/developers/docs/streaming)
-- [Sarovi retries and receipts](https://api.sarovi.site/developers/docs/retries)
-- [Sarovi pricing](https://api.sarovi.site/developers/pricing)
+- [قرارداد عمومی API ساروی](https://api.sarovi.site/openapi.json)
+- [اولین درخواست](https://api.sarovi.site/developers/docs/quickstart)
+- [پاسخ زنده](https://api.sarovi.site/developers/docs/streaming)
+- [تکرار درخواست و پیگیری مصرف](https://api.sarovi.site/developers/docs/retries)
+- [مدل‌ها و قیمت‌ها](https://api.sarovi.site/developers/pricing)
 
-Examples are original code, tested with synthetic fixtures. External libraries and product names belong to their owners.
+کد نمونه‌ها برای همین مجموعه نوشته شده و با دادهٔ ساختگی آزموده شده است. نام کتابخانه‌ها و محصولات دیگر متعلق به صاحبان آن‌هاست.

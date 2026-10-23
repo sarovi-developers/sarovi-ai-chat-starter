@@ -1,41 +1,42 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sarovi · Chat starter</title>
-  <meta name="description" content="A small bilingual streaming chat app built with the Sarovi API.">
+  <title>چت آمادهٔ ساروی</title>
+  <meta name="description" content="یک برنامهٔ چت فارسی با پاسخ زنده و API ساروی.">
   <link rel="icon" href="/mark.svg"><link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <aside>
-    <a class="brand" href="/" aria-label="Sarovi chat home"><img src="/mark.svg" alt="" width="38" height="38"><strong>Sarovi<span>CHAT STARTER</span></strong></a>
-    <div class="side-copy"><span class="eyebrow" data-en="YOUR NEXT IDEA" data-fa="ایدهٔ بعدی شما">YOUR NEXT IDEA</span><h2 data-en="A little chat.&#10;A place to begin." data-fa="یک گفت‌وگو.&#10;شروع یک ایده.">A little chat.&#10;A place to begin.</h2><p data-en="A working starting point for your own AI app." data-fa="یک نقطهٔ شروع کاربردی برای برنامهٔ هوش مصنوعی شما.">A working starting point for your own AI app.</p></div>
-    <nav aria-label="Developer resources">
-      <a href="https://api.sarovi.site/developers/start?utm_source=github&utm_medium=organic&utm_campaign=developer_tools_202610&utm_content=chat_starter_key" target="_blank" rel="noopener" class="key-link" data-en="Create an API key ↗" data-fa="ساخت کلید API ↗">Create an API key ↗</a>
-      <a href="https://api.sarovi.site/developers/docs/quickstart?utm_source=github&utm_medium=organic&utm_campaign=developer_tools_202610&utm_content=chat_starter_docs" target="_blank" rel="noopener" data-en="Read the quickstart ↗" data-fa="راهنمای شروع سریع ↗">Read the quickstart ↗</a>
-      <a href="https://api.sarovi.site/developers/pricing?utm_source=github&utm_medium=organic&utm_campaign=developer_tools_202610&utm_content=chat_starter_pricing" target="_blank" rel="noopener" data-en="Models & pricing ↗" data-fa="مدل‌ها و قیمت ↗">Models & pricing ↗</a>
+    <a class="brand" href="/" aria-label="خانهٔ چت ساروی"><img src="/mark.svg" alt="" width="38" height="38"><strong>ساروی<span>چت آماده</span></strong></a>
+    <div class="side-copy"><span class="eyebrow" data-en="YOUR NEXT IDEA" data-fa="ایدهٔ بعدی شما">ایدهٔ بعدی شما</span><h2 data-en="A little chat.&#10;A place to begin." data-fa="یک گفت‌وگو.&#10;شروع یک ایده.">یک گفت‌وگو.
+شروع یک ایده.</h2><p data-en="A working starting point for your own AI app." data-fa="یک نقطهٔ شروع کاربردی برای برنامهٔ هوش مصنوعی شما.">یک نقطهٔ شروع کاربردی برای برنامهٔ هوش مصنوعی شما.</p></div>
+    <nav aria-label="راهنمای توسعه‌دهندگان">
+      <a href="https://api.sarovi.site/developers/start?utm_source=github&utm_medium=organic&utm_campaign=developer_tools_202610&utm_content=chat_starter_key" target="_blank" rel="noopener" class="key-link" data-en="Create an API key ↗" data-fa="ساخت کلید API ↗">ساخت کلید API ↗</a>
+      <a href="https://api.sarovi.site/developers/docs/quickstart?utm_source=github&utm_medium=organic&utm_campaign=developer_tools_202610&utm_content=chat_starter_docs" target="_blank" rel="noopener" data-en="Read the quickstart ↗" data-fa="راهنمای شروع سریع ↗">راهنمای شروع سریع ↗</a>
+      <a href="https://api.sarovi.site/developers/pricing?utm_source=github&utm_medium=organic&utm_campaign=developer_tools_202610&utm_content=chat_starter_pricing" target="_blank" rel="noopener" data-en="Models & pricing ↗" data-fa="مدل‌ها و قیمت ↗">مدل‌ها و قیمت ↗</a>
     </nav>
-    <p class="side-foot" data-en="Your key stays on the server. No chat history is saved to disk." data-fa="کلید روی سرور می‌ماند. تاریخچهٔ گفتگو روی دیسک ذخیره نمی‌شود.">Your key stays on the server. No chat history is saved to disk.</p>
+    <p class="side-foot" data-en="Your key stays on the server. No chat history is saved to disk." data-fa="کلید روی سرور می‌ماند. تاریخچهٔ گفتگو روی دیسک ذخیره نمی‌شود.">کلید روی سرور می‌ماند. تاریخچهٔ گفتگو روی دیسک ذخیره نمی‌شود.</p>
   </aside>
   <main>
-    <header><div><span class="dot"></span><span id="mode" role="status">Loading…</span></div><div class="header-actions"><button id="new-chat" class="quiet" data-en="New chat" data-fa="گفتگوی تازه">New chat</button><button id="language" class="language" aria-label="Switch language">فارسی</button></div></header>
-    <section class="conversation" aria-label="Chat">
+    <header><div><span class="dot"></span><span id="mode" role="status">در حال آماده‌سازی…</span></div><div class="header-actions"><button id="new-chat" class="quiet" data-en="New chat" data-fa="گفتگوی تازه">گفتگوی تازه</button><button id="language" class="language" aria-label="تغییر زبان">English</button></div></header>
+    <section class="conversation" aria-label="گفتگو">
       <div id="welcome" class="welcome">
-        <span class="eyebrow" data-en="BUILT TO BE YOURS" data-fa="برای ایدهٔ شما">BUILT TO BE YOURS</span>
-        <h1 data-en="What will you make?" data-fa="چه چیزی می‌سازید؟">What will you make?</h1>
-        <p data-en="Start a conversation. Then make this starter your own." data-fa="گفتگو را شروع کنید؛ بعد این برنامه را به ایدهٔ خودتان تبدیل کنید.">Start a conversation. Then make this starter your own.</p>
+        <span class="eyebrow" data-en="BUILT TO BE YOURS" data-fa="برای ایدهٔ شما">برای ایدهٔ شما</span>
+        <h1 data-en="What will you make?" data-fa="چه چیزی می‌سازید؟">چه چیزی می‌سازید؟</h1>
+        <p data-en="Start a conversation. Then make this starter your own." data-fa="گفتگو را شروع کنید؛ بعد این برنامه را به ایدهٔ خودتان تبدیل کنید.">گفتگو را شروع کنید؛ بعد این برنامه را به ایدهٔ خودتان تبدیل کنید.</p>
         <div class="suggestions">
-          <button data-prompt-en="Explain API keys to someone building their first app." data-prompt-fa="کلید API را برای کسی که اولین برنامه‌اش را می‌سازد توضیح بده."><span>01</span><strong data-en="Understand a concept" data-fa="یک مفهوم را بفهمیم">Understand a concept</strong><small data-en="Make the complicated feel simple" data-fa="ساده کردن موضوع پیچیده">Make the complicated feel simple</small></button>
-          <button data-prompt-en="Translate into Persian: Good tools make room for better ideas." data-prompt-fa="این جمله را به انگلیسی ترجمه کن: ابزار خوب، جا را برای ایدهٔ بهتر باز می‌کند."><span>02</span><strong data-en="Find the right words" data-fa="واژهٔ درست را پیدا کنیم">Find the right words</strong><small data-en="A thought, in another language" data-fa="یک فکر، به زبانی دیگر">A thought, in another language</small></button>
-          <button data-prompt-en="Give me three small useful projects I can build with an AI API." data-prompt-fa="سه پروژهٔ کوچک و کاربردی پیشنهاد بده که با API هوش مصنوعی بسازم."><span>03</span><strong data-en="Start something useful" data-fa="چیزی کاربردی بسازیم">Start something useful</strong><small data-en="Three ideas you can build on" data-fa="سه ایده برای شروع">Three ideas you can build on</small></button>
+          <button data-prompt-en="Explain API keys to someone building their first app." data-prompt-fa="کلید API را برای کسی که اولین برنامه‌اش را می‌سازد توضیح بده."><span>01</span><strong data-en="Understand a concept" data-fa="یک مفهوم را بفهمیم">یک مفهوم را بفهمیم</strong><small data-en="Make the complicated feel simple" data-fa="ساده کردن موضوع پیچیده">ساده کردن موضوع پیچیده</small></button>
+          <button data-prompt-en="Translate into Persian: Good tools make room for better ideas." data-prompt-fa="این جمله را به انگلیسی ترجمه کن: ابزار خوب، جا را برای ایدهٔ بهتر باز می‌کند."><span>02</span><strong data-en="Find the right words" data-fa="واژهٔ درست را پیدا کنیم">واژهٔ درست را پیدا کنیم</strong><small data-en="A thought, in another language" data-fa="یک فکر، به زبانی دیگر">یک فکر، به زبانی دیگر</small></button>
+          <button data-prompt-en="Give me three small useful projects I can build with an AI API." data-prompt-fa="سه پروژهٔ کوچک و کاربردی پیشنهاد بده که با API هوش مصنوعی بسازم."><span>03</span><strong data-en="Start something useful" data-fa="چیزی کاربردی بسازیم">چیزی کاربردی بسازیم</strong><small data-en="Three ideas you can build on" data-fa="سه ایده برای شروع">سه ایده برای شروع</small></button>
         </div>
       </div>
-      <div id="messages" role="log" aria-label="Messages" aria-live="polite"></div>
+      <div id="messages" role="log" aria-label="پیام‌ها" aria-live="polite"></div>
     </section>
     <div class="composer-wrap">
-      <label id="password-wrap" hidden><span data-en="App password" data-fa="رمز برنامه">App password</span><input id="password" type="password" autocomplete="off"></label>
-      <form id="composer"><label class="sr-only" for="prompt" data-en="Your message" data-fa="پیام شما">Your message</label><textarea id="prompt" rows="2" maxlength="4000" placeholder="Ask a question or try an idea…" required></textarea><button id="send" type="submit" data-en="Send ↗" data-fa="ارسال ↗">Send ↗</button><button id="stop" type="button" hidden data-en="Stop" data-fa="توقف">Stop</button></form>
-      <div class="below"><span id="hint">Offline preview uses no credits. Real API requests use your Sarovi balance.</span><span id="usage"></span></div>
+      <label id="password-wrap" hidden><span data-en="App password" data-fa="رمز برنامه">رمز برنامه</span><input id="password" type="password" autocomplete="off"></label>
+      <form id="composer"><label class="sr-only" for="prompt" data-en="Your message" data-fa="پیام شما">پیام شما</label><textarea id="prompt" rows="2" maxlength="4000" placeholder="یک سؤال یا ایده بنویسید…" required></textarea><button id="send" type="submit" data-en="Send ↗" data-fa="ارسال ↗">ارسال ↗</button><button id="stop" type="button" hidden data-en="Stop" data-fa="توقف">توقف</button></form>
+      <div class="below"><span id="hint">پیش‌نمایش آفلاین رایگان است. درخواست واقعی از اعتبار حساب ساروی مصرف می‌کند.</span><span id="usage"></span></div>
       <p id="notice" role="status"></p>
     </div>
   </main>

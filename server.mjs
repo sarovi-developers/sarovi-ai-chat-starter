@@ -24,38 +24,38 @@ export function createApp({demo = false, env = process.env, fetcher = fetch, tru
     const json = (status, data) => { res.writeHead(status, {...headers, 'Content-Type': 'application/json'}); res.end(JSON.stringify(data)); };
     const path = (req.url || '').split('?')[0];
     const allowedHost = trustedHost || '127.0.0.1:' + server.address()?.port;
-    if (req.headers.host !== allowedHost) return json(403, {error: 'Unrecognized host.'});
+    if (req.headers.host !== allowedHost) return json(403, {error: 'میزبان درخواست شناخته‌شده نیست.'});
     if (req.method === 'GET' && assets.has(path)) {
       const [file, type] = assets.get(path);
       try { const bytes = await readFile(root + file); res.writeHead(200, {...headers, 'Content-Type': type}); return res.end(bytes); }
-      catch { return json(500, {error: 'Static asset unavailable.'}); }
+      catch { return json(500, {error: 'فایل برنامه در دسترس نیست.'}); }
     }
     if (req.method === 'GET' && path === '/api/config') return json(200, {demo, model: config.model, requiresPassword: Boolean(password), maxOutputTokens: 512});
-    if (req.method !== 'POST' || path !== '/api/chat') return json(404, {error: 'Not found.'});
-    if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return json(415, {error: 'Send JSON.'});
+    if (req.method !== 'POST' || path !== '/api/chat') return json(404, {error: 'پیدا نشد.'});
+    if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return json(415, {error: 'بدنهٔ درخواست باید JSON باشد.'});
     const origin = req.headers.origin;
     const expectedOrigin = env.PUBLIC_ORIGIN || 'http://' + allowedHost;
-    if (origin !== expectedOrigin) return json(403, {error: 'Use this app from its own page.'});
-    if (password && !equal(req.headers['x-app-password'], password)) return json(401, {error: 'Enter the app password.'});
+    if (origin !== expectedOrigin) return json(403, {error: 'برنامه را از صفحهٔ خودش باز کنید.'});
+    if (password && !equal(req.headers['x-app-password'], password)) return json(401, {error: 'رمز برنامه را وارد کنید.'});
     const now = Date.now(), who = req.socket.remoteAddress || 'local';
     if (rate.size > 1000) for (const [key, value] of rate) if (now - value.start > 60_000) rate.delete(key);
     let bucket = rate.get(who);
     if (!bucket || now - bucket.start > 60_000) { bucket = {start: now, used: 0}; rate.set(who, bucket); }
-    if (bucket.used >= 10 || active >= 2) return json(429, {error: 'Please wait before sending another request.'});
+    if (bucket.used >= 10 || active >= 2) return json(429, {error: 'پیش از ارسال درخواست بعدی کمی صبر کنید.'});
     bucket.used++;
     const chunks = []; let size = 0;
     try {
       for await (const chunk of req) {
         size += chunk.length;
-        if (size > 24_000) return json(413, {error: 'Message history is too large.'});
+        if (size > 24_000) return json(413, {error: 'تاریخچهٔ پیام‌ها بیش از حد بزرگ است.'});
         chunks.push(chunk);
       }
       const body = JSON.parse(Buffer.concat(chunks).toString('utf8'));
       if (!Array.isArray(body.messages) || !body.messages.length || body.messages.length > 12 ||
           body.messages.some(m => !['user', 'assistant'].includes(m.role) || typeof m.content !== 'string' || !m.content.trim() || m.content.length > 4000) ||
           body.messages.reduce((n, m) => n + m.content.length, 0) > 12000 ||
-          body.messages.at(-1).role !== 'user') return json(400, {error: 'Send a message of up to 4,000 characters. Start a new chat if history is full.'});
-      if (!demo && !config.key) return json(503, {error: 'Set SAROVI_API_KEY on the server, or run the offline demo.'});
+          body.messages.at(-1).role !== 'user') return json(400, {error: 'پیام باید حداکثر ۴۰۰۰ نویسه داشته باشد؛ اگر تاریخچه پر شده، گفتگوی تازه‌ای شروع کنید.'});
+      if (!demo && !config.key) return json(503, {error: 'کلید SAROVI_API_KEY را روی سرور تنظیم کنید یا پیش‌نمایش آفلاین را اجرا کنید.'});
       if (res.destroyed) return;
       active++;
       const abort = new AbortController();
@@ -90,10 +90,10 @@ export function createApp({demo = false, env = process.env, fetcher = fetch, tru
           send({type: 'done', request_id: stream.requestId, usage, demo: false});
         }
       } catch (error) {
-        if (!abort.signal.aborted) send({type: 'error', message: error.status ? 'API error: ' + error.code : 'The response was interrupted or incomplete. Check your request in the Sarovi console before trying again.',
+        if (!abort.signal.aborted) send({type: 'error', message: error.status ? 'خطای API: ' + error.code : 'پاسخ قطع شده یا ناقص است. پیش از تلاش دوباره، همان درخواست را در کنسول ساروی بررسی کنید.',
           request_id: error.requestId || null, idempotency_key: key});
       } finally { active--; res.end(); }
-    } catch { if (!res.headersSent) json(400, {error: 'Invalid request.'}); else res.end(); }
+    } catch { if (!res.headersSent) json(400, {error: 'درخواست معتبر نیست.'}); else res.end(); }
   });
   return server;
 }
@@ -106,7 +106,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === fileURLToPath(new URL(
   }
   const publicHost = process.env.PUBLIC_ORIGIN ? new URL(process.env.PUBLIC_ORIGIN).host : undefined;
   const server = createApp({demo: process.argv.includes('--demo'), trustedHost: publicHost});
-  server.listen(port, host, () => console.log('Sarovi chat: ' + (process.env.PUBLIC_ORIGIN || 'http://127.0.0.1:' + port)));
+  server.listen(port, host, () => console.log('چت ساروی: ' + (process.env.PUBLIC_ORIGIN || 'http://127.0.0.1:' + port)));
   const stop = () => server.close(() => process.exit(0));
   process.on('SIGINT', stop); process.on('SIGTERM', stop);
 }

@@ -3,8 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A small bilingual streaming AI chat app with a server-side Sarovi API key.",
-  "scripts": {"start": "node --env-file-if-exists=.env server.mjs", "demo": "node server.mjs --demo", "test": "node --test test/*.test.mjs"},
-  "engines": {"node": ">=24"},
+  "description": "چت آمادهٔ فارسی با پاسخ زنده، کلید API ساروی روی سرور و پیش‌نمایش آفلاین.",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "demo": "node server.mjs --demo",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
   "license": "MIT"
 }

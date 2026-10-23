@@ -1,7 +1,7 @@
-# Contributing
+# مشارکت در توسعه
 
-Small, runnable improvements are welcome. Explain the problem, show the expected result, and run the offline checks in the README. Keep credentials, customer files, and provider responses out of issues and commits.
+بهبودهای کوچک و قابل اجرا را پیشنهاد کنید: مسئله را توضیح دهید، نتیجهٔ مورد انتظار را بنویسید و آزمون‌های آفلاین معرفی‌شده در راهنما را اجرا کنید. کلیدها، فایل مشتری و پاسخ خصوصی ارائه‌دهنده را در گزارش خطا یا تغییرات کد نگذارید.
 
-Use synthetic fixtures in tests. Do not add tests that make paid API calls or depend on a maintainer's secret. Include Persian and English copy when changing the app's user interface.
+آزمون‌ها باید از دادهٔ ساختگی استفاده کنند؛ آزمون پولی یا آزمونی که به کلید خصوصی نگهدارنده نیاز دارد اضافه نکنید. متن اصلی راهنما و رابط کاربری فارسی است. شناسه‌ها، نام دستورات و قالب استاندارد API را تغییر ندهید.
 
-Report an error with its code, runtime version, and a redacted reproduction. Request IDs can help support, but never post a key or private prompt. These examples use a subset of Sarovi's documented API; avoid claiming full compatibility with an unrelated provider.
+برای گزارش خطا، کد خطا، نسخهٔ محیط اجرا و یک نمونهٔ کوچک بدون اطلاعات خصوصی بفرستید. شناسهٔ درخواست برای پشتیبانی مفید است؛ کلید یا پیام خصوصی را منتشر نکنید. این نمونه‌ها بخشی از API مستند ساروی را پوشش می‌دهند؛ دربارهٔ سازگاری کامل با محصول دیگری ادعا نکنید.
